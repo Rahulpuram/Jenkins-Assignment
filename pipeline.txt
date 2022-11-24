@@ -1,0 +1,25 @@
+pipeline {
+    agent any
+        stages {
+            stage('Clone Git') {
+                steps {
+                    git 'https://github.com/Rahulpuram/Jenkins-Assignment.git'
+                }
+            }
+            stage('Build Code') {
+                steps {
+                    sh "/usr/bin/python3 Factorial.py"
+                }
+            }
+            stage('Test Code') {
+                steps {
+                    sh "/usr/bin/python3 Test.py"
+                }
+            }
+            stage('Monitoring') {
+                steps{
+                    echo "This step is monitoring"
+                }
+            }
+        }
+}
